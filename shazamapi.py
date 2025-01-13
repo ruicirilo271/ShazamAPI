@@ -5,6 +5,7 @@ import os
 import traceback
 import uuid
 import subprocess
+import json
 from typing import Optional
 from fastapi import FastAPI, HTTPException, UploadFile, File, APIRouter
 from shazamio import Shazam, Serialize, GenreMusic
@@ -80,11 +81,10 @@ artist_router = APIRouter(prefix="/music/artist", tags=["Artist"])
 async def about_artist(artist_id: int):
     try:
         about = await app.state.shazam.artist_about(artist_id)
-        print(about)
-        serialized = Serialize.artist(about)
+        //serialized = Serialize.artist(about)
         return {
             "raw": about,
-            "serialized": serialized
+            "serialized": about
         }
     except Exception as e:
         return error_response(e)
