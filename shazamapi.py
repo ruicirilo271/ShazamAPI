@@ -146,7 +146,7 @@ async def search_artists(query: str, limit: int = 5):
         artists = await app.state.shazam.search_artist(query=query, limit=limit)
         results = []
         for artist in artists.get('artists', {}).get('hits', []):
-            serialized = Serialize.artist(data=artist)
+            serialized = Serialize.artist_v2(data=artist)
             results.append(serialized)
         return results
     except Exception as e:
