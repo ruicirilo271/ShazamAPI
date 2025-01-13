@@ -7,7 +7,8 @@ import uuid
 import subprocess
 from typing import Optional
 from fastapi import FastAPI, HTTPException, UploadFile, File, APIRouter
-from shazamio import Shazam, Serialize, GenreMusic, ArtistView, ArtistQuery
+from shazamio import Shazam, Serialize, GenreMusic
+from shazamio.schemas.artists import ArtistView, ArtistQuery
 
 def error_response(e: Exception):
     return {
