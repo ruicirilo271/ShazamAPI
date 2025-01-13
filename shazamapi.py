@@ -80,7 +80,7 @@ artist_router = APIRouter(prefix="/music/artist", tags=["Artist"])
 async def about_artist(artist_id: int):
     try:
         about = await app.state.shazam.artist_about(artist_id)
-        serialized = Serialize.artist(about)
+        serialized = Serialize.artist_v2(about)
         return {
             "raw": about,
             "serialized": serialized
@@ -145,8 +145,8 @@ async def search_artists(query: str, limit: int = 5):
     try:
         artists = await app.state.shazam.search_artist(query=query, limit=limit)
         results = []
-        for artist in artists.get('artists', {}).get('hits', []).get('data', []):
-            serialized = Serialize.artist_v2(data=artist)
+        for artist in artists.get('artists', {}).get('hits', []):
+            serialized = Serialize.artist(data=artist)
             results.append(serialized)
         return results
     except Exception as e:
