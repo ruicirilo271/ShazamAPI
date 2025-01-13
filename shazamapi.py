@@ -80,7 +80,8 @@ artist_router = APIRouter(prefix="/music/artist", tags=["Artist"])
 async def about_artist(artist_id: int):
     try:
         about = await app.state.shazam.artist_about(artist_id)
-        serialized = Serialize.artist_v2(about)
+        print(about)
+        serialized = Serialize.artist(about)
         return {
             "raw": about,
             "serialized": serialized
