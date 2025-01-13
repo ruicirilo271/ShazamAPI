@@ -13,8 +13,8 @@ from shazamio.schemas.artists import ArtistView, ArtistQuery
 
 def error_response(e: Exception):
     return {
-        "error": str(e),
-        "traceback": traceback.format_exc()
+        "error": str(e)
+        #"traceback": traceback.format_exc()
     }
 
 def convert_to_supported_format(input_path: str, output_path: str) -> bool:
