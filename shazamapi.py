@@ -145,7 +145,7 @@ async def search_artists(query: str, limit: int = 5):
     try:
         artists = await app.state.shazam.search_artist(query=query, limit=limit)
         results = []
-        for artist in artists.get('artists', {}).get('hits', []):
+        for artist in artists.get('artists', {}).get('hits', []).get('data', []):
             serialized = Serialize.artist_v2(data=artist)
             results.append(serialized)
         return results
