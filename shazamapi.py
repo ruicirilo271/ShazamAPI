@@ -248,5 +248,5 @@ app.include_router(track_router)
 app.include_router(search_router)
 app.include_router(charts_router)
 
-if __name__ == "__main__":
-    uvicorn.run("main:app", host="0.0.0.0", port=8000)
+app = app  # Necessário para o Vercel reconhecer a app
+
