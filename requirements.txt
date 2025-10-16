@@ -1,4 +1,5 @@
 fastapi
-shazamio
 uvicorn
+shazamio
 python-multipart
+imageio-ffmpeg
